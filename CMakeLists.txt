@@ -6,7 +6,9 @@ set(CMAKE_C_COMPILER_NAMES clang-11 clang-10 clang-9 gcc-10 gcc-9 cc)
 # CMake Toolchain file for crosscompiling on ARM.
 #
 # Target operating system name.
+
 if ("$ENV{COMPILE_TARGET}" STREQUAL "arm")
+  link_libraries(/usr/local/lib/libpcap.so.1.9.1)
   set(CMAKE_SYSTEM_NAME Linux)
   set(CMAKE_SYSTEM_PROCESSOR aarch64)
   set(CMAKE_CROSSCOMPILING TRUE)
@@ -31,6 +33,6 @@ if ("$ENV{COMPILE_TARGET}" STREQUAL "arm")
   set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 endif()
 
-
-project(HelloWorld)
-add_executable(hello_world helloworld.c)
+project(packet_capture)
+add_executable(packet_capture packet_capture.c)
+target_link_libraries(packet_capture ${PCAP_LIBRARY})
