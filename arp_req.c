@@ -264,7 +264,6 @@ int main(
     ssize_t xlen;
 
 	for (int i = 0 ; i < argc ; i++) {
-		printf("%s\n", argv[i]);
 		if (strcmp(argv[i], "-i") == 0) {
 			if_name = argv[i+1];
 		} else if (strcmp(argv[i], "-a") == 0) {
