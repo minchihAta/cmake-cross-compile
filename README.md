@@ -12,7 +12,7 @@ $ tree
 ├── README.md
 ├── build
 ├── clean_build.sh
-└── packet_capture.c
+└── arp_req.c
 ```
 
 ### compile packet capture and run for x86
@@ -20,7 +20,7 @@ $ tree
 cd build
 COMPILE_TARGET=x86 cmake ../
 make
-./packet_capture
+./parp_req.c
 ```
 
 ### compile packet capture and run for arm
@@ -28,10 +28,9 @@ make
 cd build
 COMPILE_TARGET=arm cmake ../
 make
-# scp compiled library and binary to target server
-scp /usr/local/lib/libpcap.so.1.9.1 <armserver>@<ip addr>
-scp ./packet_capture <armserver>@<ip addr>
-armserver$./packet_capture
+# scp binary to target server
+scp ./arp_req.c <armserver>@<ip addr>
+armserver$./arp_req.c
 ```
 
 
